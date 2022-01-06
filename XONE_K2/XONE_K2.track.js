@@ -4,9 +4,13 @@ function TrackHandler(trackBank, cursorTrack) {
     this.trackBank = trackBank
     this.cursorTrack = cursorTrack
 
+    this.trackBank.sceneBank().setIndication(true)
+
     for (i = 0; i < this.trackBank.getSizeOfBank(); i++) {
         var track = this.trackBank.getItemAt(i)
         const trackIndex = i
+
+        track.clipLauncherSlotBank().setIndication(true)
 
         for (j = 0; j < track.clipLauncherSlotBank().getSizeOfBank(); j++) {
             const clip = track.clipLauncherSlotBank().getItemAt(j)
@@ -77,20 +81,6 @@ TrackHandler.prototype.handleMidi = function (status, data1, data2) {
             case REL_3_CLICK:
                 this.trackBank.getItemAt(3).pan().reset()
                 return true
-
-            case BUTTON_A:
-                this.trackBank.getItemAt(0).select()
-                return true
-            case BUTTON_B:
-                this.trackBank.getItemAt(1).select()
-                return true
-            case BUTTON_C:
-                this.trackBank.getItemAt(2).select()
-                return true
-            case BUTTON_D:
-                this.trackBank.getItemAt(3).select()
-                return true
-
             default:
                 return false
         }
@@ -109,6 +99,22 @@ TrackHandler.prototype.handleMidi = function (status, data1, data2) {
                 return true
             case REL_3:
                 this.trackBank.getItemAt(3).pan().inc(data2 == 127 ? -1 : 1, 64)
+                return true
+
+            case REL_4:
+                if (data2 == 127) {
+                    this.trackBank.scrollPageBackwards()
+                } else {
+                    this.trackBank.scrollPageForwards()
+                }
+                return true
+
+            case REL_5:
+                if (data2 == 127) {
+                    this.trackBank.sceneBank().scrollPageBackwards()
+                } else {
+                    this.trackBank.sceneBank().scrollPageForwards()
+                }
                 return true
 
             case FADER_0:

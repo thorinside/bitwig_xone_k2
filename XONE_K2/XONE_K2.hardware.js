@@ -32,6 +32,8 @@ const REL_0 = 0x00
 const REL_1 = 0x01
 const REL_2 = 0x02
 const REL_3 = 0x03
+const REL_4 = 0x14
+const REL_5 = 0x15
 
 const RED = 1
 const YELLOW = 2
