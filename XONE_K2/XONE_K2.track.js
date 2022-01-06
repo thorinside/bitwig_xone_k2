@@ -4,7 +4,8 @@ function TrackHandler(trackBank, cursorTrack) {
     this.trackBank = trackBank
     this.cursorTrack = cursorTrack
 
-    this.trackBank.sceneBank().setIndication(true)
+    this.sceneBank = this.trackBank.sceneBank()
+    this.sceneBank.setIndication(true)
 
     for (i = 0; i < this.trackBank.getSizeOfBank(); i++) {
         var track = this.trackBank.getItemAt(i)
@@ -80,6 +81,18 @@ TrackHandler.prototype.handleMidi = function (status, data1, data2) {
                 return true
             case REL_3_CLICK:
                 this.trackBank.getItemAt(3).pan().reset()
+                return true
+            case BUTTON_3_0:
+                this.sceneBank.launchScene(0)
+                return true
+            case BUTTON_3_1:
+                this.sceneBank.launchScene(1)
+                return true
+            case BUTTON_3_2:
+                this.sceneBank.launchScene(2)
+                return true
+            case BUTTON_3_3:
+                this.sceneBank.launchScene(3)
                 return true
             default:
                 return false

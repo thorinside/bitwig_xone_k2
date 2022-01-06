@@ -8,6 +8,11 @@ const FADER_1 = 0x11
 const FADER_2 = 0x12
 const FADER_3 = 0x13
 
+const BUTTON_3_0 = 0x28
+const BUTTON_3_1 = 0x29
+const BUTTON_3_2 = 0x2a
+const BUTTON_3_3 = 0x2b
+
 const BUTTON_A = 0x24
 const BUTTON_B = 0x25
 const BUTTON_C = 0x26
