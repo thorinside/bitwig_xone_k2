@@ -33,6 +33,9 @@ const BUTTON_N = 0x19
 const BUTTON_O = 0x1a
 const BUTTON_P = 0x1b
 
+const BUTTON_LAYER = 0x0c
+const BUTTON_SETUP = 0x0f
+
 const REL_0 = 0x00
 const REL_1 = 0x01
 const REL_2 = 0x02

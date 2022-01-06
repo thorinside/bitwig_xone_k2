@@ -2,11 +2,27 @@ function TransportHandler(transport) {
 
     this.transport = transport
 
-    this.transport.isPlaying().addValueObserver(function (value) {
-        println("Playing " + value)
-        hardware.updateLED(0x19, value ? YELLOW : OFF)
-     })
+    this.transport.isPlaying().markInterested()
 }
 
 TransportHandler.prototype.handleMidi = function (status, data1, data2) {
+    if (isNoteOn(status)) {
+
+        switch (data1) {
+            case BUTTON_LAYER:
+                if (this.transport.isPlaying().get()) {
+                    this.transport.stop()
+                } else {
+                    this.transport.play()
+                }
+                return true
+            default:
+                return false
+        }
+    }
+}
+
+TransportHandler.prototype.updateLEDs = function () {
+    const isPlaying = this.transport.isPlaying().get()
+    hardware.updateLED(BUTTON_LAYER, isPlaying ? YELLOW : GREEN)
 }

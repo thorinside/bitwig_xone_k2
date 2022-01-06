@@ -53,29 +53,10 @@ function handleMidi(status, note, vel) {
    if (trackHandler.handleMidi(status, note, vel)) return
 
    printMidi(status, note, vel)
-
-   /*
-      if (vel == 127) {
-         hardware.updateLED(note, YELLOW)
-      }
-   switch (note) {
-      case 0x14:
-         vel == 1 ? trackBank.scrollPageForwards() : trackBank.scrollPageBackwards()
-         break;
-      case 0x15:
-         vel == 1 ? sceneBank.scrollForwards() : sceneBank.scrollBackwards()
-         break;
-      case 0x0d:
-         if (vel == 127) trackBank.getItemAt(0).getClipLauncherSlots().launch(0)
-         break;
-      case 0x0e:
-         if (vel == 127) sceneBank.launch(0)
-         break;
-   }
-      */
 }
 
 function flush() {
+   transportHandler.updateLEDs()
    trackHandler.updateLEDs()
 }
 
