@@ -42,13 +42,10 @@ function init() {
    trackHandler = new TrackHandler(host.createMainTrackBank(4,0,4), host.createCursorTrack("XONE_CURSOR_TRACK", "Cursor Track", 0, 4, true));
 
    // TODO: Perform further initialization here.
-   println("XONE:K2 7 initialized!");
+   println("XONE:K2 initialized!");
 }
 
 function handleMidi(status, note, vel) {
-   // TODO: Implement your MIDI input handling code here.
-   printMidi(status, note, vel)
-
    if (transportHandler.handleMidi(status, note, vel)) return
    if (trackHandler.handleMidi(status, note, vel)) return
 

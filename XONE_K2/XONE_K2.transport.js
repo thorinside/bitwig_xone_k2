@@ -9,7 +9,7 @@ TransportHandler.prototype.handleMidi = function (status, data1, data2) {
     if (isNoteOn(status)) {
 
         switch (data1) {
-            case BUTTON_LAYER:
+            case BUTTON_SETUP:
                 if (this.transport.isPlaying().get()) {
                     this.transport.stop()
                 } else {
@@ -24,5 +24,5 @@ TransportHandler.prototype.handleMidi = function (status, data1, data2) {
 
 TransportHandler.prototype.updateLEDs = function () {
     const isPlaying = this.transport.isPlaying().get()
-    hardware.updateLED(BUTTON_LAYER, isPlaying ? YELLOW : GREEN)
+    hardware.updateLED(BUTTON_SETUP, isPlaying ? YELLOW : OFF)
 }

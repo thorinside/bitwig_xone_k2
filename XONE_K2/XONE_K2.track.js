@@ -36,7 +36,6 @@ function TrackHandler(trackBank, cursorTrack) {
 }
 
 TrackHandler.prototype.updateLEDs = function () {
-
     for (i = 0; i < this.trackBank.getSizeOfBank(); i++) {
         for (j = 0; j < this.trackBank.getItemAt(i).clipLauncherSlotBank().getSizeOfBank(); j++) {
             const clip = this.trackBank.getItemAt(i).clipLauncherSlotBank().getItemAt(j)
@@ -50,8 +49,6 @@ TrackHandler.prototype.updateLEDs = function () {
             )
         }
     }
-
-    hardware.updateLED(0x0f, RED)
 }
 
 TrackHandler.prototype.handleMidi = function (status, data1, data2) {
